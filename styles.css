@@ -9,7 +9,7 @@ body {
 #calculator {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     height: 400px;
     width: 300px;
     border: 10px ridge rgba(0, 0, 0, 0.548);
@@ -23,7 +23,7 @@ body {
     padding: 8px;
     background-color: rgb(80, 80, 80);
     color: white;
-    font-size: 23px;
+    font-size: 25px;
     text-align: right;
 }
 
@@ -44,14 +44,10 @@ body {
     width: 100%;
 }
 
-.button {
-    width: 100%;
-    background-color: rgb(32, 32, 32);
-    color: white;
-}
-
+.button,
 .buttonWide {
     width: 100%;
     background-color: rgb(32, 32, 32);
     color: white;
+    font-size: 22px;
 }
