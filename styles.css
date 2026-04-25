@@ -38,16 +38,20 @@ body {
     align-items: center;
 }
 
+.row {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
 .button {
-    height: 50px;
-    width: 50px;
+    width: 100%;
     background-color: rgb(32, 32, 32);
     color: white;
 }
 
 .buttonWide {
-    height: 50px;
-    width: 100px;
+    width: 100%;
     background-color: rgb(32, 32, 32);
     color: white;
 }
