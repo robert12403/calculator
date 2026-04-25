@@ -25,9 +25,10 @@ function operatorFct(nr1, operator, nr2) {
         return divide(nr1, nr2)
 }
 
-let nr1 = 0, operator, nr2
+let nr1 = 0, operator = "none", nr2 = 0
 
 const screen = document.querySelector("#screen")
+screen.textContent = nr1;
 
 const btnUndo = document.querySelector("#undo")
 const btnClear = document.querySelector("#clear")
@@ -43,6 +44,8 @@ const btn7 = document.querySelector("#seven")
 const btn8 = document.querySelector("#eight")
 const btn9 = document.querySelector("#nine")
 
+const buttons = [btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9]
+
 const btnDot = document.querySelector("#dot")
 const btnEqual = document.querySelector("#equal")
 const btnDivide = document.querySelector("#divide")
@@ -50,14 +53,28 @@ const btnMultiply = document.querySelector("#multiply")
 const btnSubstract = document.querySelector("#substract")
 const btnAdd = document.querySelector("#add")
 
-btn0.addEventListener("click", () => { nr1 = nr1 * 10 + 0; screen.textContent = nr1; })
-btn1.addEventListener("click", () => { nr1 = nr1 * 10 + 1; screen.textContent = nr1; })
-btn2.addEventListener("click", () => { nr1 = nr1 * 10 + 2; screen.textContent = nr1; })
-btn3.addEventListener("click", () => { nr1 = nr1 * 10 + 3; screen.textContent = nr1; })
-btn4.addEventListener("click", () => { nr1 = nr1 * 10 + 4; screen.textContent = nr1; })
-btn5.addEventListener("click", () => { nr1 = nr1 * 10 + 5; screen.textContent = nr1; })
-btn6.addEventListener("click", () => { nr1 = nr1 * 10 + 6; screen.textContent = nr1; })
-btn7.addEventListener("click", () => { nr1 = nr1 * 10 + 7; screen.textContent = nr1; })
-btn8.addEventListener("click", () => { nr1 = nr1 * 10 + 8; screen.textContent = nr1; })
-btn9.addEventListener("click", () => { nr1 = nr1 * 10 + 9; screen.textContent = nr1; })
+for (let i = 0; i <= 9; i++)
+    buttons[i].addEventListener("click", () => {
+        if (operator === "none") {
+            nr1 = nr1 * 10 + i; screen.textContent = nr1;
+        }
+        else {
+            nr2 = nr2 * 10 + i; screen.textContent = nr2;
+        }
+    }
+    )
 
+btnDivide.addEventListener("click", () => { operator = "divide"; screen.textContent = "/" })
+
+btnMultiply.addEventListener("click", () => { operator = "multiply"; screen.textContent = "*" }
+)
+
+btnSubstract.addEventListener("click", () => { operator = "substract"; screen.textContent = "-" }
+)
+
+btnAdd.addEventListener("click", () => { operator = "add"; screen.textContent = "+" }
+)
+
+btnEqual.addEventListener("click", () => { screen.textContent = operatorFct(nr1, operator, nr2); nr1 = 0; nr2 = 0; operator = "none" })
+
+btnClear.addEventListener("click", () => { screen.textContent = 0; nr1 = 0; nr2 = 0; operator = "none" })
