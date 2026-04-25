@@ -103,6 +103,5 @@ function btnEqualFct() {
     nr1 = operatorFct(nr1, operator, nr2)
     screen.textContent = nr1
     operator = ""
-    nr1 = ""
     nr2 = ""
 }
