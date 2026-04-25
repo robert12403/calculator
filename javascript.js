@@ -15,6 +15,8 @@ function divide(nr1, nr2) {
 }
 
 function operatorFct(nr1, operator, nr2) {
+    if (operator === "" || nr2 === "")
+        return Number(nr1).toString()
     if (operator === "+")
         return add(nr1, nr2)
     if (operator === "-")
@@ -23,6 +25,7 @@ function operatorFct(nr1, operator, nr2) {
         return multiply(nr1, nr2)
     if (operator === "/")
         return divide(nr1, nr2)
+
 }
 
 let nr1 = "", operator = "", nr2 = ""
@@ -43,14 +46,63 @@ const btnNum = document.querySelectorAll(".buttonNum")
 btnNum.forEach(button => {
     button.addEventListener("click", () => {
         const value = button.getAttribute("data-val")
-        let third = false
-        nr1 += value
-        screen.textContent = nr1
+        if (operator === "") {
+            nr1 += value
+            screen.textContent = nr1
+        }
+        else {
+            nr2 += value
+            screen.textContent = nr2
+        }
     })
 })
 
-btnDivide.addEventListener("click", () => { operator = "/"; screen.textContent = "/" })
-btnMultiply.addEventListener("click", () => { operator = "*"; screen.textContent = "*" })
-btnSubstract.addEventListener("click", () => { operator = "-"; screen.textContent = "-" })
-btnAdd.addEventListener("click", () => { operator = "+"; screen.textContent = "+" })
+btnDivide.addEventListener("click", btnDivideFct)
+btnMultiply.addEventListener("click", btnMultiplyFct)
+btnSubstract.addEventListener("click", btnSubstractFct)
+btnAdd.addEventListener("click", btnAddFct)
+btnEqual.addEventListener("click", btnEqualFct)
 
+function btnDivideFct() {
+    if (nr2 !== "") {
+        nr1 = operatorFct(nr1, operator, nr2)
+        nr2 = ""
+    }
+    operator = "/"
+    screen.textContent = Number(nr1).toString() + " /"
+}
+
+function btnMultiplyFct() {
+    if (nr2 !== "") {
+        nr1 = operatorFct(nr1, operator, nr2)
+        nr2 = ""
+    }
+    operator = "*"
+    screen.textContent = Number(nr1).toString() + " *"
+}
+
+function btnSubstractFct() {
+    if (nr2 !== "") {
+        nr1 = operatorFct(nr1, operator, nr2)
+        nr2 = ""
+    }
+    operator = "-"
+    screen.textContent = Number(nr1).toString() + " -"
+}
+
+function btnAddFct() {
+    if (nr2 !== "") {
+        nr1 = operatorFct(nr1, operator, nr2)
+        nr2 = ""
+    }
+    operator = "+"
+    screen.textContent = Number(nr1).toString() + " +"
+}
+
+function btnEqualFct() {
+    nr1 = operatorFct(nr1, operator, nr2)
+    screen.textContent = nr1
+    operator = ""
+    nr1 = ""
+    nr2 = ""
+}
