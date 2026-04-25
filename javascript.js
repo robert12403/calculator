@@ -25,11 +25,15 @@ function operatorFct(nr1, operator, nr2) {
         return divide(nr1, nr2)
 }
 
-let nr1 = 0, operator = "none", nr2 = 0
+let nr1 = "", operator = "none", nr2 = ""
 
 const screen = document.querySelector("#screen")
-screen.textContent = nr1;
-
+const btnDot = document.querySelector("#dot")
+const btnEqual = document.querySelector("#equal")
+const btnDivide = document.querySelector("#divide")
+const btnMultiply = document.querySelector("#multiply")
+const btnSubstract = document.querySelector("#substract")
+const btnAdd = document.querySelector("#add")
 const btnUndo = document.querySelector("#undo")
 const btnClear = document.querySelector("#clear")
 
@@ -46,20 +50,15 @@ const btn9 = document.querySelector("#nine")
 
 const buttons = [btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9]
 
-const btnDot = document.querySelector("#dot")
-const btnEqual = document.querySelector("#equal")
-const btnDivide = document.querySelector("#divide")
-const btnMultiply = document.querySelector("#multiply")
-const btnSubstract = document.querySelector("#substract")
-const btnAdd = document.querySelector("#add")
+
 
 for (let i = 0; i <= 9; i++)
     buttons[i].addEventListener("click", () => {
         if (operator === "none") {
-            nr1 = nr1 * 10 + i; screen.textContent = nr1;
+            nr1 = nr1 + i; screen.textContent = nr1;
         }
         else {
-            nr2 = nr2 * 10 + i; screen.textContent = nr2;
+            nr2 = nr2 + i; screen.textContent = nr2;
         }
     }
     )
@@ -75,6 +74,3 @@ btnSubstract.addEventListener("click", () => { operator = "substract"; screen.te
 btnAdd.addEventListener("click", () => { operator = "add"; screen.textContent = "+" }
 )
 
-btnEqual.addEventListener("click", () => { screen.textContent = operatorFct(nr1, operator, nr2); nr1 = 0; nr2 = 0; operator = "none" })
-
-btnClear.addEventListener("click", () => { screen.textContent = 0; nr1 = 0; nr2 = 0; operator = "none" })
