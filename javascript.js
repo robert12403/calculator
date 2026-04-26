@@ -11,7 +11,11 @@ function multiply(nr1, nr2) {
 }
 
 function divide(nr1, nr2) {
-    return (Number(nr1) / Number(nr2)).toString()
+    if (Number(nr2) !== 0)
+        return (Number(nr1) / Number(nr2)).toString()
+    else
+        return "Can't divide by zero."
+
 }
 
 function operatorFct(nr1, operator, nr2) {
@@ -111,6 +115,8 @@ function btnEqualFct() {
     operator = ""
     nr2 = ""
     afterEqual = true
+    if (nr1 === "Can't divide by zero.")
+        nr1 = 0;
 }
 
 btnClear.addEventListener("click", () => { nr1 = ""; operator = ""; nr2 = "", afterEqual = false; screen.textContent = "0" })
