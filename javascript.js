@@ -28,7 +28,7 @@ function operatorFct(nr1, operator, nr2) {
 
 }
 
-let nr1 = "", operator = "", nr2 = ""
+let nr1 = "", operator = "", nr2 = "", afterEqual = false;
 
 const screen = document.querySelector("#screen")
 
@@ -46,10 +46,16 @@ const btnNum = document.querySelectorAll(".buttonNum")
 btnNum.forEach(button => {
     button.addEventListener("click", () => {
         const value = button.getAttribute("data-val")
-        if (operator === "") {
-            nr1 += value
-            screen.textContent = nr1
-        }
+        if (operator === "")
+            if (afterEqual === false) {
+                nr1 += value
+                screen.textContent = nr1
+            }
+            else {
+                afterEqual = false
+                nr1 = value
+                screen.textContent = nr1
+            }
         else {
             nr2 += value
             screen.textContent = nr2
@@ -104,4 +110,7 @@ function btnEqualFct() {
     screen.textContent = nr1
     operator = ""
     nr2 = ""
+    afterEqual = true
 }
+
+btnClear.addEventListener("click", () => { nr1 = ""; operator = ""; nr2 = ""; screen.textContent = "0" })
