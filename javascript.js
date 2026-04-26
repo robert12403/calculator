@@ -79,6 +79,8 @@ function btnDivideFct() {
         nr2 = ""
     }
     operator = "/"
+    if (nr1 === ".")
+        nr1 = 0
     screen.textContent = Number(nr1).toString() + " /"
 }
 
@@ -88,6 +90,8 @@ function btnMultiplyFct() {
         nr2 = ""
     }
     operator = "*"
+    if (nr1 === ".")
+        nr1 = 0
     screen.textContent = Number(nr1).toString() + " *"
 }
 
@@ -97,6 +101,8 @@ function btnSubstractFct() {
         nr2 = ""
     }
     operator = "-"
+    if (nr1 === ".")
+        nr1 = 0
     screen.textContent = Number(nr1).toString() + " -"
 }
 
@@ -106,6 +112,8 @@ function btnAddFct() {
         nr2 = ""
     }
     operator = "+"
+    if (nr1 === ".")
+        nr1 = 0
     screen.textContent = Number(nr1).toString() + " +"
 }
 
