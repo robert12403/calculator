@@ -1,18 +1,18 @@
 function add(nr1, nr2) {
-    return (Number(nr1) + Number(nr2)).toString()
+    return (Math.round((Number(nr1) + Number(nr2)) * 10000000000) / 10000000000).toString()
 }
 
 function substract(nr1, nr2) {
-    return (Number(nr1) - Number(nr2)).toString()
+    return (Math.round((Number(nr1) - Number(nr2)) * 10000000000) / 10000000000).toString()
 }
 
 function multiply(nr1, nr2) {
-    return (Number(nr1) * Number(nr2)).toString()
+    return (Math.round((Number(nr1) * Number(nr2)) * 10000000000) / 10000000000).toString()
 }
 
 function divide(nr1, nr2) {
     if (Number(nr2) !== 0)
-        return (Number(nr1) / Number(nr2)).toString()
+        return (Math.round((Number(nr1) / Number(nr2)) * 10000000000) / 10000000000).toString()
     else
         return "Can't divide by zero."
 
