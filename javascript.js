@@ -125,3 +125,14 @@ btnUndo.addEventListener("click", () => {
         screen.textContent = Number(nr2).toString()
     }
 })
+
+btnDot.addEventListener("click", () => {
+    if (nr2 === "" && operator === "" && !nr1.includes(".")) {
+        nr1 = nr1 + "."
+        screen.textContent = nr1
+    }
+    else if (nr2 !== "") {
+        nr2 = nr2 + "."
+        screen.textContent = nr2
+    }
+})
