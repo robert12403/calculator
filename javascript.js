@@ -49,16 +49,16 @@ btnNum.forEach(button => {
         if (operator === "")
             if (afterEqual === false) {
                 nr1 += value
-                screen.textContent = nr1
+                screen.textContent = Number(nr1).toString()
             }
             else {
                 afterEqual = false
                 nr1 = value
-                screen.textContent = nr1
+                screen.textContent = Number(nr1).toString()
             }
         else {
             nr2 += value
-            screen.textContent = nr2
+            screen.textContent = Number(nr2).toString()
         }
     })
 })
@@ -113,4 +113,15 @@ function btnEqualFct() {
     afterEqual = true
 }
 
-btnClear.addEventListener("click", () => { nr1 = ""; operator = ""; nr2 = ""; screen.textContent = "0" })
+btnClear.addEventListener("click", () => { nr1 = ""; operator = ""; nr2 = "", afterEqual = false; screen.textContent = "0" })
+
+btnUndo.addEventListener("click", () => {
+    if (nr2 === "" && operator === "" && afterEqual === false) {
+        nr1 = nr1.slice(0, -1)
+        screen.textContent = Number(nr1).toString()
+    }
+    else if (nr2 !== "") {
+        nr2 = nr2.slice(0, -1)
+        screen.textContent = Number(nr2).toString()
+    }
+})
