@@ -137,7 +137,7 @@ btnDot.addEventListener("click", () => {
         nr1 = nr1 + "."
         screen.textContent = nr1
     }
-    else if (nr2 !== "") {
+    else if (nr2 !== "" && !nr2.includes(".")) {
         nr2 = nr2 + "."
         screen.textContent = nr2
     }
